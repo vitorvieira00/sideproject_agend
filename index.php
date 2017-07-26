@@ -1,6 +1,6 @@
 <?php
-    require 'controlador_agenda.php';
-    $meusContatos = pegarContatos();
+require 'controlador_agenda.php';
+$meusContatos = pegarContatos();
 ?>
 
 <!DOCTYPE html>
@@ -68,18 +68,18 @@
                 <tbody>
                 <!-- repetir -->
                 <?php foreach ($meusContatos as $contato): ?>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><?= $contato['id']?></td>
-                    <td><?= $contato['nome']?></td>
-                    <td><?= $contato['email'] ?></td>
-                    <td><?= $contato['telefone'] ?></td>
-                    <td>
-                        <a href="controlador_agenda.php?acao=excluir&id=<?= $contato['id'] ?>">excluir</a>
-                        <a href="formulario_editar_agenda.php?id=<?= $contato['id']?>"> editar</a>
-                    </td>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><?= $contato['id']?></td>
+                        <td><?= $contato['nome']?></td>
+                        <td><?= $contato['email'] ?></td>
+                        <td><?= $contato['telefone'] ?></td>
+                        <td>
+                            <a href="controlador_agenda.php?acao=excluir&id=<?= $contato['id'] ?>">excluir</a>
+                            <a href="formulario_editar_agenda.php?id=<?= $contato['id']?>"> editar</a>
+                        </td>
 
-                </tr>
+                    </tr>
                 <?php endforeach; ?>
                 </tbody>
             </table>

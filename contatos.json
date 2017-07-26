@@ -1,8 +1,8 @@
 [
     {
         "id": "594bf1a838965",
-        "nome": "Jefferson Chaves",
-        "email": "jefferson7chaves@gmail.com",
+        "nome": "Bruno",
+        "email": "bruno@gmail.com",
         "telefone": "(47) 997557422"
     },
     {
@@ -10,11 +10,5 @@
         "nome": "Jefferson",
         "email": "jefferson7chaves@gmail.com",
         "telefone": "(47) 997557422"
-    },
-    {
-        "id": "595f98f140c89",
-        "nome": "fasfasdf",
-        "email": "semnocao123@hotmail.com",
-        "telefone": "(47)33333-3333"
     }
 ]

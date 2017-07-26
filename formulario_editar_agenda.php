@@ -1,6 +1,6 @@
 <?php
-    require 'controlador_agenda.php';
-    $contato = buscarContatoParaEditar($_GET['id']);
+require 'controlador_agenda.php';
+$contato = buscarContatoParaEditar($_GET['id']);
 ?>
 
 <!doctype html>
