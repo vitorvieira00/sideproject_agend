@@ -1,39 +1,39 @@
 <?php
 function pegarContatos(){
-    $contatosAuxiliar = file_get_contents('contatos.json');
-    $contatosAuxiliar = json_decode($contatosAuxiliar, true);
+    $contatosAuxiliar = file_get_contents('contatos.json');//guardando os resultados
+    $contatosAuxiliar = json_decode($contatosAuxiliar, true);//convertendo para um array
     return $contatosAuxiliar;
 }
 
 function cadastrar($nome){
     $contatos = pegarContatos();
     $contato = [
-        'id'      => uniqid(),
+        'id'      => uniqid(),//gerar um id diferente de todos os outros a cada vez que for atualizado
         'nome'    => $nome,
         'email'   => $_POST['email'],
         'telefone'=> $_POST['telefone']
     ];
     array_push($contatos, $contato);
-    $contatosJson = json_encode($contatos, JSON_PRETTY_PRINT);
+    $contatosJson = json_encode($contatos, JSON_PRETTY_PRINT);//arrumar na hora de executar
     file_put_contents('contatos.json', $contatosJson);
     header("Location: index.php");
 }
 function excluirContato($id){
-    $contatosAuxiliar = file_get_contents('contatos.json');
-    $contatosAuxiliar = json_decode($contatosAuxiliar, true);
+    $contatosAuxiliar = file_get_contents('contatos.json');//guardando os resultados
+    $contatosAuxiliar = json_decode($contatosAuxiliar, true);//convertendo para um array
     foreach ($contatosAuxiliar as $posicao => $contato){
         if($id == $contato['id']) {
             unset($contatosAuxiliar[$posicao]);
         }
     }
-    $contatosJson = json_encode($contatosAuxiliar, JSON_PRETTY_PRINT);
+    $contatosJson = json_encode($contatosAuxiliar, JSON_PRETTY_PRINT);//arrumar na hora de executar
     file_put_contents('contatos.json', $contatosJson);
     header('Location: index.php');
 }
 //EDITAR CONTATO
 function buscarContatoParaEditar($id_procurado){
-    $contatosAuxiliar = file_get_contents('contatos.json');
-    $contatosAuxiliar = json_decode($contatosAuxiliar, true);
+    $contatosAuxiliar = file_get_contents('contatos.json');//guardando os resultados
+    $contatosAuxiliar = json_decode($contatosAuxiliar, true);//convertendo para um array
     foreach ($contatosAuxiliar as $contato){
         if ($contato['id'] == $id_procurado){
             return $contato;
@@ -41,8 +41,8 @@ function buscarContatoParaEditar($id_procurado){
     }
 }
 function salvarContatoEditado($id){
-    $contatosAuxiliar = file_get_contents('contatos.json');
-    $contatosAuxiliar = json_decode($contatosAuxiliar, true);
+    $contatosAuxiliar = file_get_contents('contatos.json');//guardando os resultados
+    $contatosAuxiliar = json_decode($contatosAuxiliar, true);//convertendo para um array
     foreach ($contatosAuxiliar as $posicao => $contato){
         if ($contato['id'] == $id){
             $contatosAuxiliar[$posicao]['nome'] = $_POST['nome'];
@@ -51,11 +51,11 @@ function salvarContatoEditado($id){
             break;
         }
     }
-    $contatosJson = json_encode($contatosAuxiliar, JSON_PRETTY_PRINT);
+    $contatosJson = json_encode($contatosAuxiliar, JSON_PRETTY_PRINT);//arrumar na hora de executar
     file_put_contents('contatos.json', $contatosJson);
     header('Location: index.php');
 }
-//ROTAS
+//GERENCIAMENTO DE ROTAS
 if ($_GET['acao'] == 'cadastrar'){
     cadastrar($_POST['nome']);
 } elseif ($_GET['acao'] == 'excluir'){
