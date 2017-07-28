@@ -1,6 +1,12 @@
 <?php
 require 'controlador_agenda.php';
-$meusContatos = pegarContatos();
+
+if(isset($_GET['buscar'])){
+    $meusContatos = pegarContatos($_GET['buscar']);
+
+}else{
+    $meusContatos = pegarContatos();
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +23,12 @@ $meusContatos = pegarContatos();
 
     <h3>MINHA AGENDA DE CONTATOS</h3>
     <br />
+    
+    <form method="get">
+        <input type="text" name="buscar">
+        <input type="submit">
+    </form>
+    <br>
 
     <!-- CADASTRO-->
     <div class="row">
